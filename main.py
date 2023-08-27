@@ -1,16 +1,55 @@
-# This is a sample Python script.
+def newGame():
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+    correct_guess = 0
+    question_num = 1
+    for key in questions:
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+
+        userGuess = input('your Answer?: ').upper()
+        correct_guess += check_answer(questions.get(key), userGuess)
+        print('-------------------')
+
+        question_num += 1
+    print('your score is: ' + str(correct_guess))
+def check_answer(answer, guess):
+    if answer == guess:
+        print(guess + ' is right')
+        return 1
+    else:
+        print(guess + ' is wrong')
+        return 0
+def display_score():
+    pass
+
+def play_again():
+    response = input(' wanna play again? (yes/no): ')
+    response = response.upper()
+
+    if response == 'YES':
+        return True
+    else:
+        return False
+
+questions = {
+    'whats the biggest populations?: ': 'A',
+    'what is country name?: ': 'B',
+    'are you stupid?: ': 'C',
+    'idiot?: ': 'A'
+}
+
+options = [
+    ['A. India', 'B. USA', 'C. Mexico', 'D. Canada'],
+    ['A. USA ', 'B. India', 'C. Canada', 'D. Mexico'],
+    ['A. no', 'B. Maybe', 'C. Yes', 'D. Just a little bit'],
+    ['A. no', 'B. Maybe', 'C. Yes', 'D. Just a little bit']
+]
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+newGame()
 
+while play_again():
+    newGame()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print('bye')
